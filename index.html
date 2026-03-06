@@ -8,22 +8,25 @@
     <meta name="description" content="НК Геометрия: изготовление и ремонт РВД в Полевском. Демонтаж зданий и бетонных конструкций. Спецтехника, грузовики, промышленное оборудование.">
     <meta name="keywords" content="НК Геометрия, РВД Полевской, ремонт рукавов высокого давления, демонтаж зданий Полевской, фитинги, спецтехника">
     <meta property="og:title" content="НК ГЕОМЕТРИЯ — Высокое давление и демонтаж">
-    <meta property="og:url" content="https://nko-geometry.ru">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        body { font-family: 'Inter', sans-serif; }
         .glass { background: rgba(17, 24, 39, 0.85); backdrop-filter: blur(12px); }
         .card-zoom:hover img { transform: scale(1.1); }
         [x-cloak] { display: none !important; }
+        .neon-border { border: 1px solid rgba(59, 130, 246, 0.5); box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100" x-data="geometryApp()">
+<body class="bg-gray-950 text-gray-100 selection:bg-blue-500" x-data="geometryApp()">
 
     <nav class="fixed w-full z-50 glass border-b border-gray-800 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex flex-col">
                 <span class="font-black text-2xl tracking-tighter uppercase">НК <span class="text-blue-500">Геометрия</span></span>
+                <span class="text-[10px] text-gray-500 uppercase tracking-widest">Промышленные решения</span>
             </div>
             <button @click="isCartOpen = true" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition relative">
                 🛒 <span x-show="cart.length > 0" class="absolute -top-1 -right-1 bg-red-600 text-[10px] w-5 h-5 flex items-center justify-center rounded-full" x-text="cart.length"></span>
@@ -31,131 +34,193 @@
         </div>
     </nav>
 
-    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover opacity-30 shadow-inner" alt="Производство РВД">
-        <div class="relative z-10 text-center px-4">
-            <h1 class="text-6xl md:text-8xl font-black mb-4">НК <span class="text-blue-500">ГЕОМЕТРИЯ</span></h1>
-            <p class="text-xl text-gray-400 uppercase tracking-widest">Инженерный сервис & Демонтажные работы</p>
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80')] bg-cover bg-center scale-105 opacity-30"></div>
+        <div class="relative z-10 text-center px-6">
+            <h1 class="text-6xl md:text-8xl font-black mb-6 leading-tight">НК <span class="text-blue-500 italic">ГЕОМЕТРИЯ</span></h1>
+            <p class="text-xl text-gray-400 uppercase tracking-widest max-w-3xl mx-auto">Изготовление РВД и Демонтаж зданий в Полевском. Работаем 24/7.</p>
+            <div class="flex flex-wrap justify-center gap-4 uppercase text-xs font-bold mt-12">
+                <a href="#calc" class="bg-blue-600 px-10 py-5 rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-900/40">Калькулятор РВД</a>
+                <a href="https://t.me/+79827195455" class="border border-gray-600 px-10 py-5 rounded-full hover:bg-white hover:text-black transition">Связаться в ТГ</a>
+            </div>
         </div>
     </header>
 
-    <section class="py-20 px-6 max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-        <div class="group overflow-hidden rounded-[40px] bg-gray-900 border border-gray-800 card-zoom">
-            <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?auto=format&fit=crop&q=80" class="w-full h-48 object-cover transition duration-500" alt="Рукава высокого давления">
-            <div class="p-8">
-                <h3 class="text-2xl font-bold mb-2 uppercase">Изготовление РВД</h3>
-                <p class="text-gray-500 text-sm">Любые размеры и фитинги для спецтехники и автомоек.</p>
+    <section class="py-24 px-6 bg-gray-900">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="group overflow-hidden rounded-[40px] bg-gray-800 border border-gray-700 card-zoom neon-border">
+                <img src="https://images.unsplash.com/photo-1610222402120-e2ff9d77e486?auto=format&fit=crop&q=80" class="w-full h-56 object-cover transition duration-500" alt="Рукав высокого давления крупным планом">
+                <div class="p-8">
+                    <div class="text-blue-500 text-3xl mb-4 font-bold">01</div>
+                    <h3 class="text-2xl font-bold mb-3 uppercase">Изготовление РВД</h3>
+                    <p class="text-gray-400 text-sm">Любые размеры и типы рукавов для спецтехники, грузовиков и пром. оборудования.</p>
+                </div>
             </div>
-        </div>
-        <div class="group overflow-hidden rounded-[40px] bg-gray-900 border border-gray-800 card-zoom">
-            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80" class="w-full h-48 object-cover transition duration-500" alt="Фитинги и комплектующие">
-            <div class="p-8">
-                <h3 class="text-2xl font-bold mb-2 uppercase">Фитинги и БРС</h3>
-                <p class="text-gray-500 text-sm">DKOL, BSP, JIC в наличии. Только высокопрочная сталь.</p>
+            <div class="group overflow-hidden rounded-[40px] bg-gray-800 border border-gray-700 card-zoom neon-border">
+                <img src="https://images.unsplash.com/photo-1618342411933-c4eb5e709407?auto=format&fit=crop&q=80" class="w-full h-56 object-cover transition duration-500" alt="Гидравлические фитинги и соединения">
+                <div class="p-8">
+                    <div class="text-blue-500 text-3xl mb-4 font-bold">02</div>
+                    <h3 class="text-2xl font-bold mb-3 uppercase">Фитинги и БРС</h3>
+                    <p class="text-gray-400 text-sm">Высокопрочные соединения типов DKOL, BSP, JIC в наличии на складе.</p>
+                </div>
             </div>
-        </div>
-        <div class="group overflow-hidden rounded-[40px] bg-gray-900 border border-gray-800 card-zoom">
-            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" class="w-full h-48 object-cover transition duration-500" alt="Демонтаж зданий">
-            <div class="p-8">
-                <h3 class="text-2xl font-bold mb-2 uppercase">Демонтаж</h3>
-                <p class="text-gray-500 text-sm italic">Снос зданий и сооружений, демонтаж бетонных конструкций.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="calc" class="py-20 px-6 bg-blue-600">
-        <div class="max-w-4xl mx-auto text-black">
-            <div class="bg-white rounded-[50px] p-10 shadow-2xl">
-                <h2 class="text-3xl font-black mb-8 text-center uppercase">Расчет стоимости РВД</h2>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="space-y-6">
-                        <div>
-                            <label class="font-bold text-sm uppercase">Диаметр (DN)</label>
-                            <select x-model="calc.dn" class="w-full mt-2 bg-gray-100 p-4 rounded-2xl outline-none">
-                                <option value="10">DN10 (3/8")</option>
-                                <option value="12">DN12 (1/2")</option>
-                                <option value="20">DN20 (3/4")</option>
-                                <option value="25">DN25 (1")</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="font-bold text-sm uppercase">Длина (метры)</label>
-                            <input type="number" x-model="calc.length" class="w-full mt-2 bg-gray-100 p-4 rounded-2xl">
-                        </div>
-                    </div>
-                    <div class="flex flex-col justify-center text-center">
-                        <div class="text-6xl font-black mb-4" x-text="calculatePrice() + ' ₽'"></div>
-                        <button @click="addToCart" class="bg-black text-white py-5 rounded-2xl font-bold uppercase hover:bg-gray-800 transition">В корзину</button>
-                    </div>
+            <div class="group overflow-hidden rounded-[40px] bg-gray-800 border border-gray-700 card-zoom neon-border">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80" class="w-full h-56 object-cover transition duration-500" alt="Демонтаж зданий">
+                <div class="p-8">
+                    <div class="text-blue-500 text-3xl mb-4 font-bold">03</div>
+                    <h3 class="text-2xl font-bold mb-3 uppercase">Демонтаж</h3>
+                    <p class="text-gray-400 text-sm italic">Снос зданий, сооружений, демонтаж бетонных конструкций любой сложности.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 px-6 bg-black text-center">
-        <h2 class="text-2xl font-bold mb-4 uppercase">НК ГЕОМЕТРИЯ</h2>
-        <p class="text-gray-500 mb-8">г. Полевской, ул. Совхозная 14, корп. 8</p>
-        <div class="flex flex-col gap-2">
-            <a href="tel:+79827195455" class="text-3xl font-black text-blue-500">+7 982 719-54-55</a>
-            <p class="text-sm">WhatsApp / Telegram: +7 982 719-54-55</p>
-            <p class="text-xs text-gray-600 mt-4">Доп. номер: +7 922 201 17 10</p>
+    <section id="calc" class="py-24 px-6 relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black uppercase">Инженерный <span class="text-blue-500">Конфигуратор</span></h2>
+                <p class="text-gray-500 mt-2">Точный расчет стоимости изготовления рукава онлайн</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 bg-gray-900 p-8 md:p-12 rounded-[40px] neon-border">
+                <div class="space-y-6">
+                    <div>
+                        <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Диаметр шланга (DN)</label>
+                        <select x-model="calc.dn" class="w-full mt-2 bg-gray-800 border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none">
+                            <option value="10">DN10 (3/8")</option>
+                            <option value="12">DN12 (1/2")</option>
+                            <option value="20">DN20 (3/4")</option>
+                            <option value="25">DN25 (1")</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Длина (Метры)</label>
+                        <input type="number" x-model="calc.length" step="0.1" class="w-full mt-2 bg-gray-800 border-none p-4 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-center items-center p-8 bg-blue-600/10 rounded-3xl border border-blue-600/20 text-center">
+                    <span class="text-xs uppercase font-bold text-blue-400 tracking-widest">Предварительная цена</span>
+                    <div class="text-6xl font-black my-4" x-text="calculatePrice() + ' ₽'"></div>
+                    <button @click="addToCart" class="w-full bg-blue-600 py-5 rounded-2xl font-black uppercase tracking-tighter hover:bg-blue-500 transition shadow-xl shadow-blue-600/30">Добавить в корзину</button>
+                    <p class="text-[10px] text-gray-500 mt-4">Цена включает стандартные фитинги и работу по опрессовке</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-black px-6 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="col-span-1 lg:col-span-2">
+                <h3 class="text-2xl font-black mb-6 uppercase">НК ГЕОМЕТРИЯ</h3>
+                <p class="text-gray-500 text-sm max-w-sm mx-auto md:mx-0">Профессиональный сервис гидравлических систем и строительный демонтаж в Полевском.</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold uppercase text-blue-500 mb-4 tracking-widest">Адрес</h4>
+                <p class="text-sm text-gray-400">623000, Свердловская обл.<br>г. Полевской, ул. Совхозная 14, корп. 8</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold uppercase text-blue-500 mb-4 tracking-widest">Связь</h4>
+                <a href="tel:+79827195455" class="block font-bold text-lg hover:text-blue-400">+7 982 719-54-55</a>
+                <p class="text-xs text-gray-500 mt-2 italic">Telegram привязан к номеру</p>
+            </div>
         </div>
     </footer>
 
-    <div x-show="isCartOpen" class="fixed inset-0 z-[100] flex justify-end" x-cloak>
-        <div class="absolute inset-0 bg-black/80" @click="isCartOpen = false"></div>
-        <div class="relative w-full max-w-md bg-gray-900 h-full p-8 flex flex-col shadow-2xl">
-            <h2 class="text-2xl font-black mb-8">КОРЗИНА</h2>
+    <div x-show="isCartOpen" class="fixed inset-0 z-[100] flex justify-end" x-cloak x-transition>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" @click="isCartOpen = false"></div>
+        <div class="relative w-full max-w-md bg-gray-950 h-full shadow-2xl p-8 flex flex-col border-l border-gray-800">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl font-black uppercase">Ваш заказ</h2>
+                <button @click="isCartOpen = false" class="text-gray-500 hover:text-white text-2xl">✕</button>
+            </div>
+
             <div class="flex-1 overflow-y-auto space-y-4">
                 <template x-for="(item, index) in cart" :key="index">
-                    <div class="bg-gray-800 p-4 rounded-2xl flex justify-between items-center">
+                    <div class="bg-gray-900 p-5 rounded-3xl border border-gray-800 flex justify-between items-center">
                         <div>
-                            <div class="font-bold uppercase text-xs" x-text="item.name"></div>
-                            <div class="text-blue-500 font-bold" x-text="item.price + ' ₽'"></div>
+                            <div class="font-black text-sm uppercase" x-text="item.name"></div>
+                            <div class="text-[10px] text-gray-500 mt-1" x-text="item.desc"></div>
                         </div>
-                        <button @click="cart.splice(index, 1)" class="text-red-500 text-xs uppercase font-bold">Удалить</button>
+                        <div class="text-right">
+                            <div class="font-bold text-blue-500" x-text="item.price + ' ₽'"></div>
+                            <button @click="cart.splice(index, 1)" class="text-[10px] text-red-500 uppercase font-bold mt-2 underline">Удалить</button>
+                        </div>
                     </div>
                 </template>
+                <div x-show="cart.length === 0" class="text-center py-20 text-gray-600">Ваша корзина пуста</div>
             </div>
-            <button @click="sendToTelegram" :disabled="loading" class="w-full bg-green-600 py-5 rounded-2xl font-black mt-8 hover:bg-green-500">
-                ОФОРМИТЬ В TELEGRAM
-            </button>
+
+            <div class="pt-8 border-t border-gray-800" x-show="cart.length > 0">
+                <div class="flex justify-between items-end mb-8">
+                    <span class="text-xs font-bold uppercase text-gray-500">Итоговая сумма</span>
+                    <span class="text-3xl font-black text-white" x-text="totalPrice() + ' ₽'"></span>
+                </div>
+                <button @click="sendToTelegram" :disabled="loading" class="w-full bg-green-600 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-green-500 disabled:opacity-50 transition flex justify-center items-center">
+                    <span x-show="!loading">Отправить заказ в Telegram</span>
+                    <span x-show="loading" class="animate-pulse">Отправка...</span>
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
         function geometryApp() {
             return {
+                // ПАРАМЕТРЫ TELEGRAM - ЗАМЕНИТЕ НА СВОИ
                 tgToken: '8633245568:AAELbaVibgpM4uVXo6VhpEqRPOOVcENxf_o', 
                 tgChatId: '5019934310',
+
                 isCartOpen: false,
                 loading: false,
                 calc: { dn: 10, length: 1 },
                 cart: [],
+
                 calculatePrice() {
-                    return Math.round((700 + (this.calc.dn * 20)) * this.calc.length);
+                    // Базовая формула НК Геометрия
+                    return Math.round((750 + (this.calc.dn * 25)) * this.calc.length);
                 },
+
                 addToCart() {
                     this.cart.push({
-                        name: `РВД DN${this.calc.dn} (${this.calc.length}м)`,
+                        name: `РВД DN${this.calc.dn}`,
+                        desc: `${this.calc.length} м.`,
                         price: this.calculatePrice()
                     });
                     this.isCartOpen = true;
                 },
+
+                totalPrice() {
+                    return this.cart.reduce((sum, item) => sum + item.price, 0);
+                },
+
                 async sendToTelegram() {
                     this.loading = true;
-                    let message = "🆕 ЗАКАЗ НК ГЕОМЕТРИЯ:\n";
-                    this.cart.forEach((item, i) => message += `${i+1}. ${item.name} - ${item.price}₽\n`);
+                    let message = "🆕 ЗАКАЗ: НК ГЕОМЕТРИЯ\n";
+                    message += "--------------------------\n";
+                    this.cart.forEach((item, i) => {
+                        message += `${i+1}. ${item.name} (${item.desc}) - ${item.price} ₽\n`;
+                    });
+                    message += "--------------------------\n";
+                    message += `ИТОГО: ${this.totalPrice()} ₽`;
+
                     try {
-                        await fetch(`https://api.telegram.org/bot${this.tgToken}/sendMessage`, {
+                        const res = await fetch(`https://api.telegram.org/bot${this.tgToken}/sendMessage`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ chat_id: this.tgChatId, text: message })
                         });
-                        alert('Заказ отправлен!');
-                        this.cart = [];
-                        this.isCartOpen = false;
-                    } finally { this.loading = false; }
+                        
+                        if (res.ok) {
+                            alert('Заказ успешно отправлен!');
+                            this.cart = [];
+                            this.isCartOpen = false;
+                        }
+                    } catch (e) {
+                        alert('Ошибка отправки. Пожалуйста, позвоните нам.');
+                    } finally {
+                        this.loading = false;
+                    }
                 }
             }
         }
